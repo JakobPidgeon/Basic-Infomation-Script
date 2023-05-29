@@ -1,0 +1,51 @@
+#! /bin/sh
+echo
+echo
+echo "system information"
+uname -srv
+#this command uses the uname command which is used to get basic information about the Operating system and by putting the three letters together prints the information with only one command 
+#The s prints the kernel name
+#The r prints the kernel release
+#The v prints the kernel version
+echo
+echo
+echo "Free memory"
+free -m
+#This command gives the amount of free memory or ram in megabytes (m) 
+echo
+echo
+echo "Hard drive information on this server" 
+df 
+#This command shows information about the disk space including the name of the file, size of that file (1K-blocks), how much have been used, how much space is available and the mount point (directory)
+echo
+echo
+echo "Top 5 processes by memory" 
+ps aux --sort -%mem | head --lines=6 
+#This command shows the top 5 processes by memory usage with the ps aux command, sorting it by memory with the --sort and the -%mem meaning sorting by memory, the head command usually by default does the  top 10 lines from the provided source but i have changed that to 6 becasue the hender counts as a line 
+
+
+#below is the script being wrapped with { } it's sends what in those characters to a file given with the >> command creating the output file  
+
+{ 
+#! /bin/sh
+echo
+echo
+echo "system information"
+uname -srv
+
+echo
+echo
+echo "Free memory"
+sudo free -m
+ 
+echo
+echo
+echo "Hard drive information on this server" 
+df 
+     
+echo
+echo
+echo "Top 5 processes by memory"
+ps aux --sort -%mem | head --lines=6 
+
+}>>/home/jpidgeon/Bin/osys2022_assign2_output.txt
